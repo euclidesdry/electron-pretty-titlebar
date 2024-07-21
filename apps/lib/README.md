@@ -1,4 +1,4 @@
-# Pretty Electron Titlebar
+# Pretty Electron Titlebar (Deprecated) Go To-> [@drycstud.io/electron-titlebar](https://github.com/drycstudio/drystud.io)
 
 <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/euclidesdry/electron-pretty-titlebar/titlebar-ci.yml?style=for-the-badge&label=CI">
 

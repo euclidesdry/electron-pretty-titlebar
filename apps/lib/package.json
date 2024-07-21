@@ -1,5 +1,5 @@
 {
-  "name": "lib",
+  "name": "@euclidesdry/electron-pretty-titlebar",
   "version": "0.3.6",
   "type": "module",
   "main": "dist/main.cjs",

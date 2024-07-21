@@ -1,5 +1,4 @@
 {
-  "name": "@euclidesdry/electron-pretty-titlebar",
   "version": "0.3.6",
   "type": "module",
   "license": "MIT",
@@ -40,7 +39,7 @@
     "packages/*.{js,jsx,ts,tsx,css,md,html,json}": "yarn lint:format"
   },
   "dependencies": {
-    "lib": "workspace:*"
+    "@euclidesdry/electron-pretty-titlebar": "workspace:*"
   },
   "devDependencies": {
     "@titlebar/config-typescript": "workspace:*",

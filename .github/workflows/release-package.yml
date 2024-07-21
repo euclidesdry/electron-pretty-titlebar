@@ -11,6 +11,8 @@ on:
 jobs:
   build-ci:
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.artifact-upload-step.outputs.artifact-id }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -47,8 +49,8 @@ jobs:
       - name: 🔼 Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: app
-          path: ./apps/lib
+          name: libs
+          path: ./
 
   publish-npm:
     needs: build-ci
@@ -62,19 +64,23 @@ jobs:
       - name: 📥 Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: app
+          name: libs
 
-      - uses: actions/setup-node@v4
+      - name: 📂 Checking app directory (after Donloading artifact)
+        run: |
+          ls -la
+
+      - name: 📦 Publishing NPM Packages
+        uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'yarn'
           registry-url: 'https://registry.npmjs.org'
           scope: '@euclidesdry'
 
       - name: 🖥️ Publishing package
-        uses: borales/actions-yarn@v5
-        with:
-          cmd: turbo run publish:package --filter=lib # will run `yarn build:prod` command
+        run: |
+          yarn install
+          yarn publish-packages
         env:
           NODE_AUTH_TOKEN: ${{secrets.AUTH_NPM_TOKEN}}
 #   publish-gpr:
